@@ -1,10 +1,10 @@
 1. Find all the topics and tasks which are thought in the month of October:
 
-   db.getCollection('Topics').aggregate(
+   db.getCollection('topics').aggregate(
   [
     {
       $lookup: {
-        from: 'Tasks',
+        from: 'tasks',
         localField: 'topic',
         foreignField: 'task',
         as: 'Topic Task Data'
@@ -31,7 +31,7 @@
 
 2. Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020:
 
-   db.getCollection('Company_Drives').find({
+   db.getCollection('company_drives').find({
   driveDate: {
     $gte: '2020-10-15',
     $lte: '2020-10-31'
@@ -42,11 +42,11 @@
 
 3. Find all the company drives and students who are appeared for the placement:
 
-   db.getCollection('Company_Drives').aggregate(
+   db.getCollection('company_drives').aggregate(
   [
     {
       $lookup: {
-        from: 'Users',
+        from: 'users',
         localField: 'userId',
         foreignField: 'userId',
         as: 'studentInfo'
@@ -70,7 +70,7 @@
 
 4. Find the number of problems solved by the user in codekata:
 
-   db.getCollection('Codekata').aggregate(
+   db.getCollection('codekata').aggregate(
   [
     {
       $group: {
@@ -86,7 +86,7 @@
 
 5. Find all the mentors with who has the mentee's count more than 15:
 
-   db.getCollection('Mentors').aggregate(
+   db.getCollection('mentors').aggregate(
   [{ $match: { menteeCount: { $gt: 15 } } }],
   { maxTimeMS: 60000, allowDiskUse: true }
 );
@@ -94,11 +94,11 @@
 
 6. Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020:
 
-   db.getCollection('Attendence').aggregate(
+   db.getCollection('attendence').aggregate(
   [
     {
       $lookup: {
-        from: 'Topics',
+        from: 'topics',
         localField: 'topicId',
         foreignField: 'topicId',
         as: 'Absent'
@@ -106,7 +106,7 @@
     },
     {
       $lookup: {
-        from: 'Tasks',
+        from: 'tasks',
         localField: 'userId',
         foreignField: 'userId',
         as: 'Task-notSubmitted'
