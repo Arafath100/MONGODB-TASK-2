@@ -5,11 +5,10 @@ The database is designed to store information about users, codekata submissions,
 ## Table of Contents
 
 1. [Database Collections](#database-collections)
-2. [Queries](#queries)
-3. [Populating the Database](#populating-the-database)
-4. [Getting Started](#getting-started)
-5. [Contributing](#contributing)
-6. [License](#license)
+2. [Getting Started](#getting-started)
+3. [Queries](#queries)
+4. [Contributing](#contributing)
+5. [License](#license)
 
 ## Database Collections
 
